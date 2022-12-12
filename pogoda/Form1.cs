@@ -17,7 +17,11 @@ namespace pogoda
             JsonElement elemt = document.RootElement.GetProperty("current_weather");
             label1.Text = elemt.GetProperty("temperature").ToString();
             label2.Text = elemt.GetProperty("windspeed").ToString();
-            label3.Text = elemt.GetProperty("weathercode").ToString();
+            int rodzaj = int.Parse(elemt.GetProperty("weathercode").ToString());
+            if (rodzaj == 0) { label3.Text = " Clear sky"; }
+            else if (rodzaj == 1) { label3.Text = "Mainly clear"; }
+            else if (rodzaj == 2) { label3.Text = " partly cloudy"; }
+            else if (rodzaj == 3) { label3.Text = " overcast/pochmurny"; }
 
 
 
